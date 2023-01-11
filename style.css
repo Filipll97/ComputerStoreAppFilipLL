@@ -1,5 +1,101 @@
+/* Reset */
 * {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
 }
+
+/* Generall styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2em;
+    font-size: 1em;
+}
+
+.btn {
+    border-radius: 10px;
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-primary-color {
+    background: #119b94;
+}
+.btn-secondary-color {
+    background: #2a06a2;
+}
+.btn-gold-color {
+    background: #f9f3ac;
+}
+
+/* Navbar styling */
+nav {
+    background: #333;
+}
+
+nav h1 {
+    margin-left: 40px;
+    color: #fff;
+    padding: 0.5em  0;
+}
+
+/* Cards styling */
+main .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5em;
+    margin: 20px 40px;
+} 
+
+main .cards .card {
+    border-radius: 10px;
+    background: #f4f4f4;
+}
+
+main .cards .card .card-items {
+    padding: 10px;
+} 
+main .cards .card .card-items p {
+    font-size: 0.8em;
+}
+main .cards .card .card-items h2 {
+    padding: 10px 0px;
+}
+main .cards .card .card-items .row-elements
+{
+    display: flex;
+}
+main .cards .card .card-items .row-elements #btns {
+    margin: 60px 50px;
+}
+
+/* Showcase styling */
+main .showcase {
+    background: #f4f4f4;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin: 20px 40px;
+    padding: 20px;
+}
+main .showcase .product-imgs {
+    background: #f9f3ac;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+
+main .showcase .product-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main .showcase .product-info .text-container {
+    margin: auto;
+    width: 70%;
+}
+
+
+
