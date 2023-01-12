@@ -12,6 +12,10 @@ body {
     font-size: 1em;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .btn {
     border-radius: 10px;
     border: 1px solid #333;
@@ -52,11 +56,9 @@ main .cards {
 main .cards .card {
     border-radius: 10px;
     background: #f4f4f4;
+    padding: 10px;
 }
 
-main .cards .card .card-items {
-    padding: 10px;
-} 
 main .cards .card .card-items p {
     font-size: 0.8em;
 }
