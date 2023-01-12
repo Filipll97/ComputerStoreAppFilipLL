@@ -14,18 +14,21 @@
     <main>
         <!-- Cars styling -->
         <div class="cards">
+            <!-- Card Bank section -->
             <div class="card">
                 <div class="card-items"> <!-- TODO Fix so that the card have a container that stores all the items and has all the padding on it! -->
                     <h2>Joe Banker</h2>
                     <div class="row-elements">
                         <p>Balance</p>
-                        <p>200 kr</p>
+                        <p id="bank-balance">200 kr</p>
                     </div>
-                    <button class="btn btn-primary-color">
-                        <p>Get a loan</p>
+                    <button class="btn btn-primary-color" id="btn-loan">
+                        Get a loan
                     </button>
                 </div>
             </div>
+
+            <!-- Card Work section -->
             <div class="card">
                 <div class="card-items">
                     <h2>Work</h2>
@@ -43,23 +46,22 @@
                     </div>
                 </div>
             </div>
-
+          
+            <!-- Card laptops section -->
             <div class="card">
                 <div class="card-items">
                     <h2>Laptops</h2>
-                    
-                    <select name="Products" id="Products">
-                        <option value="">Intol Celeroon E10</option>
-                        <option value="">Intol Celeroon E11</option>
+                    <select name="Products-laptop" id="Products-laptop">
+                        <option value="">Intol Celeoon E10</option>
+                        <option value="">Intol Celeoon E11</option>
                     </select>
-                   
-                    <p id="bold-text">Features:</p>
                     <p>
-                        It has a screen<br>There's a keyboard<br>(Some keys might be missing)
+                        <span>Features:</span> <br>It has a screen<br>There's a keyboard<br>(Some keys might be missing)
                     </p>
                 </div>
             </div>         
         </div>
+
         <!-- ShowCase section -->
         <section class="showcase">
             <div class="product-imgs"></div>
@@ -75,6 +77,7 @@
             </div>
         </section>
     </main>
-    <script src="app.js"></script>
+    <script src="main.js"></script>
+    <script src="app.js" type="modules"></script>
 </body>
 </html>

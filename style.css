@@ -60,6 +60,11 @@ main .cards .card .card-items {
 main .cards .card .card-items p {
     font-size: 0.8em;
 }
+
+main .cards .card .card-items span {
+    font-weight: bold;
+}
+
 main .cards .card .card-items h2 {
     padding: 10px 0px;
 }
