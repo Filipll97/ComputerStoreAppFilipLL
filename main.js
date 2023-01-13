@@ -2,44 +2,52 @@
 // declaring the dom objects 
 const BtnLoanElement = document.getElementById("btn-loan");
 const loanTextElement = document.getElementById("loan-text");
+
 const bankBalanceElement = document.getElementById("bank-balance");
 const loanBalanceElement = document.getElementById("loan-balance");
 
 // setting initial bank balance
 bankBalanceElement.textContent = 100;
+
 let loanBalance = 0
 let bankBalance = 100;
 let maxLoan = bankBalance * 2;
 
 // Get loan button logic
 BtnLoanElement.addEventListener("click", function() {
-    let loan = prompt("Please enter the amount you wish to loan: ");
-    
-    // Program so that the user can only enter numbers!
-    let validAmount = true;
-    while (validAmount) {
-        if (!isNaN(Number(loan))) {
-            loan = Number(loan);
-            validAmount = false;    
+    if (loanBalance > 0)
+        alert(`You have to repay the current loan before applying for a new loan!`);
+    else {
+        let loan = prompt("Please enter the amount you wish to loan: ");
+        
+        // Program so that the user can only enter numbers! multiple 
+        let validAmount = true;
+        while (validAmount) {
+            if (!isNaN(Number(loan))) {
+                loan = Number(loan);
+                validAmount = false;    
+            }
+            else
+                loan = prompt("Invalid amount!, please enter a number you wish to loan: ");
         }
-        else
-            loan = prompt("Invalid amount!, please enter a number you wish to loan: ");
-    }
+        
+        // Loan constrains logic 
+        if (maxLoan > loan && loanBalance === 0)
+        {
+            loanBalance += loan;
+            bankBalance += loan;
+            maxLoan = bankBalance * 2;   
     
-    // Loan constrains logic 
-    if (maxLoan > loan && bankBalance > 0)
-    {
-        loanBalance += loan;
-        bankBalance += loan;
-        maxLoan = bankBalance * 2;   
-
-        // setting the new state of the DOM objects
-        bankBalanceElement.textContent = bankBalance;
-        loanBalanceElement.textContent = loanBalance;
-        loanTextElement.classList.remove("hidden");
+            // setting the new state of the DOM objects
+            bankBalanceElement.textContent = bankBalance;
+            loanBalanceElement.textContent = loanBalance;
+            loanTextElement.classList.remove("hidden");
+        }
+        else if (loanBalance === 0)
+            alert(`You have to repay the current loan before applying for a new loan!`);
+        else
+            alert(`Loan Invalid! The maximum amount you are able to loan is ${maxLoan}!`);
     }
-    else
-        alert(`Loan Invalid! The maximum amount you are able to loan is ${maxLoan}!`);
 });
 // TODO: add some sort of eventlistener that hide the loan text if balance is zero! 
 console.log(`Your loan is: ${loanBalance} and your bank balance is: ${bankBalance} and the maximum amount you can loan is ${maxLoan}`);
@@ -68,16 +76,18 @@ btnBankElement.addEventListener("click", function () {
     if (loanBalance != 0) {
         // TODO: Write logic that deduct the rest amount that can aper if the 
         // paybackAmount is bigger the loan!!
-        console.log(workBalance);
         paybackAmount = workBalance * 0.1;
         workBalance -= paybackAmount;
-        console.log(workBalance); // DEBUG: When clicking on bank two times the 
         // bankBalance get deducted the same amount you added the first time.
         
         // Update DOM
         bankBalanceElement.textContent = (bankBalance + workBalance);
+        bankBalance += workBalance;
+
         salaryBalanceElement.textContent = 0;
+        console.log(workBalance); // DEBUG: When clicking on bank two times the 
         workBalance = 0;
+        paybackAmount = 0;
     }
 })
 
