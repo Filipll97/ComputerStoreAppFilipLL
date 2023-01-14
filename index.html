@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
-    <nav>
+<body class="background-secondary">
+    <nav class="background-primary">
         <h1>Komputer Store</h1>
     </nav>
     <main>
         <!-- Cars styling -->
         <div class="cards">
             <!-- Card Bank section -->
-            <div class="card">
+            <div class="card background-cards">
                 <div class="card-items"> <!-- TODO Fix so that the card have a container that stores all the items and has all the padding on it! -->
                     <h2>Joe Banker</h2>
                     <div class="row-elements">
@@ -33,7 +33,7 @@
             </div>
 
             <!-- Card Work section -->
-            <div class="card">
+            <div class="card background-cards">
                 <div class="card-items">
                     <h2>Work</h2>
                     <div class="row-elements">
@@ -41,23 +41,23 @@
                         <p id="salary-balance">0 kr</p>
                     </div>
                     <div id="btn-repay-loan">
-                        <button class="btn btn-primary-color btn-hover" id="btn-repay">
+                        <button class="btn btn-primary-color btn-hover hidden" id="btn-repay">
                             <p>Repay loan</p>
                         </button>
                     </div>
                     <div class="row-elements" id="btns">
-                        <button class="btn btn-gold-color btn-hover" id="btn-bank">
+                        <button class="btn btn-secondary-color btn-hover" id="btn-bank">
                             <p>Bank</p>
                         </button>
-                        <button class="btn btn-secondary-color btn-hover" id="btn-work">
+                        <button class="btn btn-primary-color btn-hover" id="btn-work">
                             <p>Work</p>
                         </button>
                     </div>
                 </div>
             </div>
           
-            <!-- Card laptops section -->
-            <div class="card">
+            <!-- Card laptop section -->
+            <div class="card background-cards">
                 <div class="card-items">
                     <h2>Laptops</h2>
                     <select name="Products-laptop" id="Products-laptop">
@@ -72,7 +72,7 @@
         </div>
 
         <!-- ShowCase section -->
-        <section class="showcase">
+        <section class="showcase background-cards">
             <div class="product-imgs"></div>
             <div class="product-info">
                 <div class="text-container">
@@ -82,7 +82,7 @@
             </div>
             <div class="product-payment-info">
                 <h2>1500 NOK</h2>
-                <button class="btn btn-gold-color btn-hover">BUY NOW</button>
+                <button class="btn btn-secondary-color btn-hover" id="btn-buy-product">BUY NOW</button>
             </div>
         </section>
     </main>

@@ -5,6 +5,35 @@
     padding: 0px;
 }
 
+
+/* 
+// standard colors
+header: #333
+body: #fff
+cards: #f4f4f4
+button 1: #f9f3ac
+button 2: #14c59f
+
+// test 1
+Brightly Orange Number 2: #f43a09
+
+Grandpa Orange: #ffb766
+
+Grey Blue Green: #c2edda
+
+Live Green: #68d388
+
+// test 2
+Ragin Beige: #fff5d7
+
+Coral Pink: #ff5e6c
+
+Sleuthe Yellow: #feb300
+
+Pink Leaf: #ffaaab
+*/
+
+
 /* Generall styling */
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -23,26 +52,28 @@ body {
     text-align: center;
     width: 100%;
 }
+.background-primary {
+    background: #333;
+}
+.background-secondary {
+    background: #fff;
+}
+.background-cards {
+    background: #fff5d7;
+}
 
 .btn-primary-color {
-    background: #119b94;
+    background: #ff5e6c;
 }
 .btn-secondary-color {
-    background: #14c59f;
-}
-.btn-gold-color {
-    background: #f9f3ac;
+    background: #feb300;
 }
 
 .btn-hover:hover {
-    background: #119b949f;
+    background: rgba(106, 106, 106, 0.33);
 }
 
 /* Navbar styling */
-nav {
-    background: #333;
-}
-
 nav h1 {
     margin-left: 40px;
     color: #fff;
@@ -59,7 +90,7 @@ main .cards {
 
 main .cards .card {
     border-radius: 10px;
-    background: #f4f4f4;
+    border: #333 solid 1px;
     padding: 10px;
 }
 
@@ -73,6 +104,9 @@ main .cards .card .card-items span {
 
 main .cards .card .card-items h2 {
     padding: 10px 0px;
+}
+main .cards .card .card-items #btn-loan {
+    margin-top: 35px;
 }
 
 /* Buttons styling */
@@ -93,11 +127,13 @@ main .cards .card .card-items .row-elements #btns {
 
 /* Showcase styling */
 main .showcase {
-    background: #f4f4f4;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     margin: 20px 40px;
     padding: 20px;
+    border: #333 solid 1px;
+    border-radius: 10px;
+
 }
 main .showcase .product-imgs {
     background: #f9f3ac;
