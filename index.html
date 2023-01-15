@@ -9,80 +9,82 @@
 </head>
 <body class="background-secondary">
     <nav class="background-primary">
-        <h1>Komputer Store</h1>
+        <div class="title-text">
+            <h1>Komputer Store</h1>
+        </div>
     </nav>
     <main>
-        <!-- Cars styling -->
-        <div class="cards">
-            <!-- Card Bank section -->
-            <div class="card background-cards">
-                <div class="card-items"> <!-- TODO Fix so that the card have a container that stores all the items and has all the padding on it! -->
-                    <h2>Joe Banker</h2>
-                    <div class="row-elements">
-                        <p>Balance</p>
-                        <p id="bank-balance">200 kr</p>
-                    </div>
-                    <div class="row-elements hidden" id="loan-text">
-                        <p>Loan</p>
-                        <p id="loan-balance">0</p>
-                    </div>
-                    <button class="btn btn-primary-color btn-hover" id="btn-loan">
-                        Get a loan
+    <!-- Cars styling -->
+        <!-- Card Bank section -->
+        <div class="card background-cards" id="card1">
+            <div class="card-items"> 
+                <h2>Joe Banker</h2>
+                <div class="row-elements">
+                    <p>Balance</p>
+                    <p id="bank-balance">200 kr</p>
+                </div>
+                <div class="row-elements hidden" id="loan-text">
+                    <p>Loan</p>
+                    <p id="loan-balance">0</p>
+                </div>
+                <button class="btn btn-primary-color btn-hover" id="btn-loan">
+                    Get a loan
+                </button>
+            </div>
+        </div>
+
+        <!-- Card Work section -->
+        <div class="card background-cards" id="card2">
+            <div class="card-items">
+                <h2>Work</h2>
+                <div class="row-elements">
+                    <p>Pay</p>
+                    <p id="salary-balance">0 kr</p>
+                </div>
+                <div id="btn-repay-loan">
+                    <button class="btn btn-primary-color btn-hover hidden" id="btn-repay">
+                        <p>Repay loan</p>
+                    </button>
+                </div>
+                <div class="row-elements" id="btns">
+                    <button class="btn btn-secondary-color btn-hover" id="btn-bank">
+                        <p>Bank</p>
+                    </button>
+                    <button class="btn btn-primary-color btn-hover" id="btn-work">
+                        <p>Work</p>
                     </button>
                 </div>
             </div>
-
-            <!-- Card Work section -->
-            <div class="card background-cards">
-                <div class="card-items">
-                    <h2>Work</h2>
-                    <div class="row-elements">
-                        <p>Pay</p>
-                        <p id="salary-balance">0 kr</p>
-                    </div>
-                    <div id="btn-repay-loan">
-                        <button class="btn btn-primary-color btn-hover hidden" id="btn-repay">
-                            <p>Repay loan</p>
-                        </button>
-                    </div>
-                    <div class="row-elements" id="btns">
-                        <button class="btn btn-secondary-color btn-hover" id="btn-bank">
-                            <p>Bank</p>
-                        </button>
-                        <button class="btn btn-primary-color btn-hover" id="btn-work">
-                            <p>Work</p>
-                        </button>
-                    </div>
-                </div>
-            </div>
-          
-            <!-- Card laptop section -->
-            <div class="card background-cards">
-                <div class="card-items">
-                    <h2>Laptops</h2>
-                    <select name="Products-laptop" id="Products-laptop">
-                        <option value="">Intol Celeoon E10</option>
-                        <option value="">Intol Celeoon E11</option>
-                    </select>
-                    <p>
-                        <span>Features:</span> <br>It has a screen<br>There's a keyboard<br>(Some keys might be missing)
-                    </p>
-                </div>
-            </div>         
         </div>
-
-        <!-- ShowCase section -->
-        <section class="showcase background-cards">
-            <div class="product-imgs"></div>
-            <div class="product-info">
-                <div class="text-container">
-                    <h2>Intol Celeroon E10</h1>
-                    <p>This laptop will turn on! It is perfect for the first time user who likes to have a computer around!</p>
-                </div>
+        
+        <!-- Card laptop section -->
+        <div class="card background-cards" id="card3">
+            <div class="card-items laptop">
+                <h2>Laptops</h2>
+                <select name="Products-laptop" id="Products-laptop">
+                    <option value="">Intol Celeoon E10</option>
+                    <option value="">Intol Celeoon E11</option>
+                </select>
+                <p>
+                    <span>Features:</span> <br>It has a screen<br>There's a keyboard<br>(Some keys might be missing)
+                </p>
             </div>
-            <div class="product-payment-info">
-                <h2>1500 NOK</h2>
-                <button class="btn btn-secondary-color btn-hover" id="btn-buy-product">BUY NOW</button>
+        </div>         
+
+        <!-- Showcase section -->
+        <section class="showcase background-cards">
+            <div class="grid-container">
+                <div id="product-img"></div>
+                <div id="#product-text-info">
+                    <div class="text-container">
+                        <h2>Intol Celeroon E10</h1>
+                        <p>This laptop will turn on! It is perfect for the first time user who likes to have a computer around!</p>
+                    </div>
+                </div>
+                <div id="payment-info">
+                    <h2>1500 NOK</h2>
+                    <button class="btn btn-secondary-color btn-hover" id="btn-buy-product">BUY NOW</button>
+                </div>
             </div>
         </section>
     </main>

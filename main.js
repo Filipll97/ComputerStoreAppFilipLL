@@ -1,5 +1,4 @@
 /* Bank Logic */
-
 // Declaring the dom objects 
 const BtnLoanElement = document.getElementById("btn-loan");
 const loanTextElement = document.getElementById("loan-text");
@@ -9,7 +8,7 @@ let loanBalanceElement = document.getElementById("loan-balance");
 let maxLoanLimit; 
 
 // Setting initial bank balances
-bankBalanceElement.textContent = 100;
+bankBalanceElement.textContent = 0;
 
 // Get loan button logic
 BtnLoanElement.addEventListener("click", function() {
@@ -18,8 +17,13 @@ BtnLoanElement.addEventListener("click", function() {
     else {
         loanBalanceElement.textContent = prompt("Please enter the amount you wish to loan:");
 
-        // Setting new maxLoanLimit
-        maxLoanLimit = Number(bankBalanceElement.textContent) * 2; 
+        // Setting maxLoanLimit
+        if (Number(bankBalanceElement.textContent) === 0) {
+            maxLoanLimit = 200;
+        }
+        else {
+            maxLoanLimit = Number(bankBalanceElement.textContent) * 2; 
+        }
 
         // Ensures that the user only input numbers and valid amount  
         let validAmount = true;
