@@ -1,3 +1,5 @@
+import fetchPosts from "./posts.js";
+import postsView from "./postsView.js";
 /* Bank Logic */
 // Declaring the dom objects 
 const BtnLoanElement = document.getElementById("btn-loan");
@@ -148,55 +150,34 @@ btnPuyProductElement.addEventListener("click", function () {
 });
 
 
-/* Work Logic  
-const salaryBalanceElement = document.getElementById("salary-balance");
-const btnWorkElement = document.getElementById("btn-work");
-const btnBankElement = document.getElementById("btn-bank"); 
+/* Laptop info section */
+// API logic
+const testApiData = document.getElementById("test-API-Data");
 
-// Setting initial balance
-salaryBalanceElement.textContent = 0;
-let workBalance = 0;
-let paybackAmount = 0;
-const salaryAmount = 100;
- 
+const initialPosts = await fetchPosts();
+postsView.setPost(initialPosts);
 
-// Work button logic
-btnWorkElement.addEventListener("click", function () {
-    workBalance += salaryAmount;
-    salaryBalanceElement.textContent = Number(salaryBalanceElement.textContent) + salaryAmount;
-});
+renderActivePosts();
 
-// Bank logic
-btnBankElement.addEventListener("click", function () {
-    // check if user have a loan
-    if (loanBalanceElement.textContent != 0) {
-        paybackAmount = workBalance * 0.1;
-        workBalance -= paybackAmount;
-        
-        // Update DOM
-        bankBalanceElement.textContent = Number(bankBalanceElement.textContent) + workBalance;
-        salaryBalanceElement.textContent = 0; 
-        
-        // if the payback amount is larger then the loan amount the rest goes to balance!
-        if (paybackAmount > Number(loanBalanceElement.textContent)) {
-            bankBalanceElement.textContent = Number(bankBalanceElement.textContent) + (paybackAmount - Number(loanBalanceElement.textContent));
-            loanBalanceElement.textContent = 0
-        }
-        else {
-            loanBalanceElement.textContent = Number(loanBalanceElement.textContent) - paybackAmount;
-        }
-        
-        // Reset variables
-        workBalance = 0;
-        paybackAmount = 0;
+function renderActivePosts() {
+    const activePosts = postsView.getPosts();
+    let laptopSpecs;
+    console.log(activePosts)
+
+    for (const activePost of activePosts) {
+        // TODO: clean this code upp and implement som the select html element select can select title and that tilte is pair to its id and specs!
+        testApiData.textContent = laptopSpecs;
+        laptopSpecs = testAPItoHtml(activePost.specs);
     }
-    else {
-        bankBalanceElement.textContent = Number(bankBalanceElement.textContent) + workBalance;
-        salaryBalanceElement.textContent = 0;
-        workBalance = 0;
+    console.log(laptopSpecs);
+
+}
+
+console.log(initialPosts);
+function testAPItoHtml (apiInfo) {
+    let dataInfo = ""; 
+    for (const element of apiInfo) {
+        dataInfo += element + "\n"; 
     }
-})
-
-
-
-*/
+    return dataInfo;
+}
