@@ -1,7 +1,6 @@
 let currentPost = [];
 
 const getPosts = () => {
-    console.log(...currentPost, "Ask about how you destructure the promise without the ... operator!")
     return [...currentPost];
 }
 

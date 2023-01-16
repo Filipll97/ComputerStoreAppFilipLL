@@ -21,11 +21,11 @@
                 <h2>Joe Banker</h2>
                 <div class="row-elements">
                     <p>Balance</p>
-                    <p id="bank-balance">200 kr</p>
+                    <p> <span id="bank-balance"></span> kr</p>
                 </div>
                 <div class="row-elements hidden" id="loan-text">
                     <p>Loan</p>
-                    <p id="loan-balance">0</p>
+                    <p><span id="loan-balance"></span> kr</p>
                 </div>
                 <button class="btn btn-primary-color btn-hover" id="btn-loan">
                     Get a loan
@@ -39,7 +39,7 @@
                 <h2>Work</h2>
                 <div class="row-elements">
                     <p>Pay</p>
-                    <p id="salary-balance">0 kr</p>
+                    <p><span id="salary-balance"></span> kr</p>
                 </div>
                 <div id="btn-repay-loan">
                     <button class="btn btn-primary-color btn-hover hidden" id="btn-repay">
@@ -61,28 +61,27 @@
         <div class="card background-cards" id="card3">
             <div class="card-items laptop">
                 <h2>Laptops</h2>
-                <select name="Products-laptop" id="Products-laptop">
-                    <option value="">Intol Celeoon E10</option>
-                    <option value="">Intol Celeoon E11</option>
-                </select>
-                <p id="test-API-Data">
-                    <span>Features:</span> <br>It has a screen<br>There's a keyboard<br>(Some keys might be missing)
-                </p>
+                <select name="products-laptop" id="products-laptop"></select>
+                <p >
+                    <span>Features:</span><br>
+                    <span id="laptop-features"></span></p>
             </div>
         </div>         
 
         <!-- Showcase section -->
         <section class="showcase background-cards">
             <div class="grid-container">
-                <div id="product-img"></div>
+                <div class="product-img-container">
+                    <img src="" alt="" id="product-img">
+                </div>
                 <div id="#product-text-info">
                     <div class="text-container">
-                        <h2>Intol Celeroon E10</h1>
-                        <p>This laptop will turn on! It is perfect for the first time user who likes to have a computer around!</p>
+                        <h2 id="laptop-heading-description"></h2>
+                        <p id="laptop-description">No laptop selected!</p>
                     </div>
                 </div>
                 <div id="payment-info">
-                    <h2>1500 NOK</h2>
+                    <h2><span id="laptop-price"></span> Kr</h2>
                     <button class="btn btn-secondary-color btn-hover" id="btn-buy-product">BUY NOW</button>
                 </div>
             </div>

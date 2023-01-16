@@ -43,6 +43,10 @@ body {
     font-size: 1em;
 }
 
+span {
+    font-weight: bold;
+}
+
 /* Utility Classes */
 .hidden {
     visibility: hidden;
@@ -114,32 +118,40 @@ main {
 /* Cards styling */
 main #card1 {
     grid-area: card1;
-    max-height: 300px;
 }
+
 main #card2 {
     grid-area: card2;
 }
+
 main #card3 {
     grid-area: card3;
 }
+
+main #laptop-features {
+    font-weight: normal;
+}
+
 main .card {
+    max-height: 250px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 20px;
+    height: 100%;
+}
+main .card .card-items {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border: #333 solid 1px;
+    height: 100%;
 }
 
 main .card .card-items p {
-    font-size: 0.8em;
-}
-
-main .card .card-items span {
-    font-weight: bold;
+    font-size: 1em;
 }
 
 main .card .card-items h2 {
     padding: 10px 0px;
-}
-main .card .card-items #btn-loan {
-    margin-top: 35px; /* TODO: Remove this and replace with more adaptive solution */
 }
 
 /* Buttons styling */
@@ -155,13 +167,10 @@ main .card .card-items .row-elements
     gap: 10px;
 }
 
-main .card .card-items .row-elements #btns {
-    margin: 60px 50px;
-}
-
 /* Showcase styling */
 main .showcase {
     grid-area: showcaseCard;
+    border-radius: 10px;
 }
 
 main .showcase .grid-container {
@@ -187,16 +196,21 @@ main .showcase .grid-container {
         justify-content: center;
         align-items: center;
     }
-
-
 }
 
-main .showcase .grid-container #product-img {
+main .showcase .grid-container .product-img-container {
     grid-area: product-img;
-    background: #f9f3ac;
-    height: 100px;
-    width: 100px;
+    background: transparent;
+    border: #f1f0f0 solid 2px;
+    border-radius: 10px;
 }
+main .showcase .grid-container .product-img-container #product-img {
+    height: 125px;
+    width: 125px;
+    object-fit: fill;
+    border-radius: 10px;
+}
+
 
 main .showcase .grid-container #product-text-info {
     display: flex;
@@ -207,82 +221,3 @@ main .showcase .grid-container #product-text-info {
 main .showcase .grid-container #payment-info {
     grid-area: payment-info;
 }
-
-
-
-/* Backup CSS!
-/* Cards styling 
-main .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2.5em;
-    margin: 20px 40px;
-} 
-
-main .cards .card {
-    border-radius: 10px;
-    padding: 10px;
-}
-
-main .cards .card .card-items p {
-    font-size: 0.8em;
-}
-
-main .cards .card .card-items span {
-    font-weight: bold;
-}
-
-main .cards .card .card-items h2 {
-    padding: 10px 0px;
-}
-main .cards .card .card-items #btn-loan {
-    margin-top: 35px;
-}
-
-/* Buttons styling 
-main .cards .card .card-items #btn-repay-loan {
-    padding: 10px 0px;
-}
-
-main .cards .card .card-items .row-elements
-{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    gap: 10px;
-}
-
-main .cards .card .card-items .row-elements #btns {
-    margin: 60px 50px;
-}
-
-/* Showcase styling 
-main .showCase {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    margin: 20px 40px;
-    padding: 20px;
-    border-radius: 10px;
-
-}
-
-main .showCase .product-imgs {
-    background: #f9f3ac;
-    height: 100px;
-    width: 100px;
-    margin: auto;
-}
-
-main .showCase .product-info {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-main .showCase .product-info .text-container {
-    margin: auto;
-    width: 70%;
-}
-
-
-*/
