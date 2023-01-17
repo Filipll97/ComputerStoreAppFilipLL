@@ -24,13 +24,15 @@ const laptopHeadingDescriptionElement = document.getElementById("laptop-heading-
 const btnPuyProductElement = document.getElementById("btn-buy-product");
 const laptopPriceTextElement = document.getElementById("laptop-price");
 
-// Setting initial values for balances and initializing variables
-bankBalanceElement.textContent = 0;
-salaryBalanceElement.textContent = 0;
+// initializing variables
 let maxLoanLimit;
 let workBalance = 0;
 let paybackAmount = 0;
 const salaryAmount = 100;
+
+// Setting initial values for balances
+bankBalanceElement.textContent = 0;
+salaryBalanceElement.textContent = 0;
 
 // API logic
 const initialPosts = await fetchPosts();
