@@ -5,104 +5,188 @@
     padding: 0px;
 }
 
-/* Generall styling */
+/* General styling */
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.2em;
     font-size: 1em;
 }
 
+span {
+    font-weight: bold;
+}
+
+/* Utility Classes */
 .hidden {
     visibility: hidden;
 }
 
 .btn {
     border-radius: 10px;
-    border: 1px solid #333;
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
     width: 100%;
 }
 
-.btn-primary-color {
-    background: #119b94;
-}
-.btn-secondary-color {
-    background: #2a06a2;
-}
-.btn-gold-color {
-    background: #f9f3ac;
-}
-
-/* Navbar styling */
-nav {
+.background-primary {
     background: #333;
 }
 
-nav h1 {
+.background-secondary {
+    background: #fff;
+}
+
+.background-cards {
+    background: #f4f4f4;
+}
+
+.btn-primary-color {
+    background: #ff5e6c;
+}
+
+.btn-secondary-color {
+    background: #fff5d7;
+}
+
+.btn-hover:hover {
+    background: rgba(106, 106, 106, 0.33);
+}
+
+/* Navbar styling */
+nav .title-text {
+    background: linear-gradient(#fff, #e66465);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+nav .title-text h1 {
     margin-left: 40px;
-    color: #fff;
     padding: 0.5em  0;
 }
 
-/* Cards styling */
-main .cards {
+/* Main layout styling */
+main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 0.3fr;
+    grid-template-areas: "card1 card2 card3" "showcaseCard showcaseCard showcaseCard";
     gap: 2.5em;
     margin: 20px 40px;
 } 
 
-main .cards .card {
+@media screen and (max-width: 860px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.4fr 0.4fr 0.4fr 1fr;
+        grid-template-areas: "card1" "card2" "card3" "showcaseCard";
+    } 
+}
+
+/* Cards styling */
+main #card1 {
+    grid-area: card1;
+}
+
+main #card2 {
+    grid-area: card2;
+}
+
+main #card3 {
+    grid-area: card3;
+}
+
+main #laptop-features {
+    font-weight: normal;
+}
+
+main .card {
+    max-height: 250px;
     border-radius: 10px;
-    background: #f4f4f4;
-    padding: 10px;
+    padding: 10px 20px;
+    height: 100%;
+}
+main .card .card-items {
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: column;
+    /*border: #333 solid 1px;*/
+    height: 100%;
 }
 
-main .cards .card .card-items p {
-    font-size: 0.8em;
+main .card .card-items p {
+    font-size: 1em;
 }
 
-main .cards .card .card-items span {
-    font-weight: bold;
-}
-
-main .cards .card .card-items h2 {
+main .card .card-items h2 {
     padding: 10px 0px;
 }
-main .cards .card .card-items .row-elements
+
+/* Buttons styling */
+main  .card .card-items #btn-repay-loan {
+    padding: 10px 0px;
+}
+
+main .card .card-items .row-elements
 {
     display: flex;
-}
-main .cards .card .card-items .row-elements #btns {
-    margin: 60px 50px;
+    justify-content: space-between;
+    text-align: center;
+    gap: 10px;
 }
 
 /* Showcase styling */
 main .showcase {
-    background: #f4f4f4;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    margin: 20px 40px;
-    padding: 20px;
-}
-main .showcase .product-imgs {
-    background: #f9f3ac;
-    height: 100px;
-    width: 100px;
-    margin: auto;
+    grid-area: showcaseCard;
+    border-radius: 10px;
 }
 
-main .showcase .product-info {
+main .showcase .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "product-img info-text payment-info";
+    place-items: center;
+    border-radius: 10px;
+    padding: 20px 0px;
+}
+@media screen and (max-width: 860px) {
+    main .showcase .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 0.4fr 0.4fr;
+        grid-template-areas: "product-img" "info-text" "payment-info";
+        grid-row-gap: 20px;
+        padding: 10px;
+    }
+    
+    main .card .laptop{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+main .showcase .grid-container .product-img-container {
+    grid-area: product-img;
+    background: transparent;
+    border: #f1f0f0 solid 2px;
+    border-radius: 10px;
+}
+main .showcase .grid-container .product-img-container #product-img {
+    height: 125px;
+    width: 125px;
+    object-fit: fill;
+    border-radius: 10px;
+}
+
+
+main .showcase .grid-container #product-text-info {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
-main .showcase .product-info .text-container {
-    margin: auto;
-    width: 70%;
+main .showcase .grid-container #payment-info {
+    grid-area: payment-info;
 }
-
-
-
