@@ -63,7 +63,7 @@ nav .title-text {
 
 nav .title-text h1 {
     margin-left: 40px;
-    padding: 0.5em  0;
+    padding: 0.5em 0;
 }
 
 /* Main layout styling */
@@ -74,14 +74,14 @@ main {
     grid-template-areas: "card1 card2 card3" "showcaseCard showcaseCard showcaseCard";
     gap: 2.5em;
     margin: 20px 40px;
-} 
+}
 
 @media screen and (max-width: 860px) {
     main {
         grid-template-columns: 1fr;
         grid-template-rows: 0.4fr 0.4fr 0.4fr 1fr;
         grid-template-areas: "card1" "card2" "card3" "showcaseCard";
-    } 
+    }
 }
 
 /* Cards styling */
@@ -107,9 +107,10 @@ main .card {
     padding: 10px 20px;
     height: 100%;
 }
+
 main .card .card-items {
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     flex-direction: column;
     /*border: #333 solid 1px;*/
     height: 100%;
@@ -124,12 +125,11 @@ main .card .card-items h2 {
 }
 
 /* Buttons styling */
-main  .card .card-items #btn-repay-loan {
+main .card .card-items #btn-repay-loan {
     padding: 10px 0px;
 }
 
-main .card .card-items .row-elements
-{
+main .card .card-items .row-elements {
     display: flex;
     justify-content: space-between;
     text-align: center;
@@ -150,6 +150,7 @@ main .showcase .grid-container {
     border-radius: 10px;
     padding: 20px 0px;
 }
+
 @media screen and (max-width: 860px) {
     main .showcase .grid-container {
         grid-template-columns: 1fr;
@@ -158,8 +159,8 @@ main .showcase .grid-container {
         grid-row-gap: 20px;
         padding: 10px;
     }
-    
-    main .card .laptop{
+
+    main .card .laptop {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -173,6 +174,7 @@ main .showcase .grid-container .product-img-container {
     border: #f1f0f0 solid 2px;
     border-radius: 10px;
 }
+
 main .showcase .grid-container .product-img-container #product-img {
     height: 125px;
     width: 125px;

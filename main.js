@@ -11,7 +11,7 @@ const loanBalanceElement = document.getElementById("loan-balance");
 // Declaring: Work section dom objects 
 const salaryBalanceElement = document.getElementById("salary-balance");
 const btnWorkElement = document.getElementById("btn-work");
-const btnBankElement = document.getElementById("btn-bank"); 
+const btnBankElement = document.getElementById("btn-bank");
 
 // Declaring: Laptop info section dom objects
 const selectLaptopElement = document.getElementById("products-laptop");
@@ -27,7 +27,7 @@ const laptopPriceTextElement = document.getElementById("laptop-price");
 // Setting initial values for balances and initializing variables
 bankBalanceElement.textContent = 0;
 salaryBalanceElement.textContent = 0;
-let maxLoanLimit; 
+let maxLoanLimit;
 let workBalance = 0;
 let paybackAmount = 0;
 const salaryAmount = 100;
@@ -41,9 +41,9 @@ const laptopsData = postsView.getPosts();
 renderSelectOptions();
 renderActivePosts(0);
 
-/* Functions*/ 
+/* Functions*/
 // This function shows/hides the repay button and loan balance text
-function toggleDomElements (toggleMode) {
+function toggleDomElements(toggleMode) {
     if (toggleMode == "hide") {
         loanTextElement.classList.add("hidden");
         btnPayLoanElement.classList.add("hidden");
@@ -55,7 +55,7 @@ function toggleDomElements (toggleMode) {
 }
 
 // This function add Laptops to the select dropdown element 
-function renderSelectOptions () {
+function renderSelectOptions() {
     for (const laptopI in laptopsData) {
         let newOption = document.createElement("option");
         newOption.value = laptopsData[laptopI].id;
@@ -65,7 +65,7 @@ function renderSelectOptions () {
 }
 
 //This function creating the list items elements, to display features about the selected laptop 
-function createLaptopFeatureSection (laptopId) { 
+function createLaptopFeatureSection(laptopId) {
     laptopsData[laptopId].specs.forEach(element => {
         let newListElement = document.createElement("li");
         newListElement.innerHTML = element;
@@ -79,7 +79,7 @@ function renderActivePosts(laptopId) {
         // Reset the list of features
         laptopFeaturesElement.innerHTML = ""
         createLaptopFeatureSection(laptopId);
-        laptopHeadingDescriptionElement.innerHTML = laptopsData[laptopId].title 
+        laptopHeadingDescriptionElement.innerHTML = laptopsData[laptopId].title
         laptopDescriptionElement.innerHTML = laptopsData[laptopId].description;
         laptopPriceTextElement.innerHTML = laptopsData[laptopId].price;
 
@@ -87,14 +87,14 @@ function renderActivePosts(laptopId) {
         let imgLink = `https://hickory-quilled-actress.glitch.me/${laptopsData[laptopId].image}`;
         laptopImgElement.src = imgLink;
         laptopImgElement.onerror = () => {
-            laptopImgElement.src = imgLink.endsWith(".png") ? imgLink.replace(".png", ".jpg") : imgLink.replace(".jpg", ".png"); 
-        }      
-    }       
+            laptopImgElement.src = imgLink.endsWith(".png") ? imgLink.replace(".png", ".jpg") : imgLink.replace(".jpg", ".png");
+        }
+    }
 }
 
 /* EventListeners */
 // Get loan button logic
-BtnLoanElement.addEventListener("click", function() {
+BtnLoanElement.addEventListener("click", function () {
     if (Number(loanBalanceElement.textContent) > 0)
         alert(`You have to repay the current loan before applying for a new loan!`);
     else {
@@ -105,15 +105,14 @@ BtnLoanElement.addEventListener("click", function() {
             maxLoanLimit = 200;
         }
         else {
-            maxLoanLimit = Number(bankBalanceElement.textContent) * 2; 
+            maxLoanLimit = Number(bankBalanceElement.textContent) * 2;
         }
 
         // Ensures that the user only input numbers and valid amount  
         let validAmount = true;
-        while (validAmount) 
-        {
-            if (!isNaN(Number(loanBalanceElement.textContent)) && maxLoanLimit >= Number(loanBalanceElement.textContent)) 
-                validAmount = false;   
+        while (validAmount) {
+            if (!isNaN(Number(loanBalanceElement.textContent)) && maxLoanLimit >= Number(loanBalanceElement.textContent))
+                validAmount = false;
             else if (isNaN(Number(loanBalanceElement.textContent)))
                 loanBalanceElement.textContent = prompt("Invalid amount, needs to be a number! Amount: ");
             else
@@ -121,9 +120,9 @@ BtnLoanElement.addEventListener("click", function() {
         }
         // Updates the user bank balance
         bankBalanceElement.textContent = (Number(bankBalanceElement.textContent) + Number(loanBalanceElement.textContent));
-        
+
         // Hides the loan balance text and repay loan button if 
-        if (Number(loanBalanceElement.textContent) != 0) 
+        if (Number(loanBalanceElement.textContent) != 0)
             toggleDomElements("add");
     }
 });
@@ -140,12 +139,12 @@ btnBankElement.addEventListener("click", function () {
     if (loanBalanceElement.textContent != 0) {
         paybackAmount = workBalance * 0.1;
         workBalance -= paybackAmount;
-        
+
         // Update DOM
         bankBalanceElement.textContent = Number(bankBalanceElement.textContent) + workBalance;
-        salaryBalanceElement.textContent = 0; 
-        
-        
+        salaryBalanceElement.textContent = 0;
+
+
         // if the payback amount is larger then the loan amount the rest goes to balance!
         if (paybackAmount > Number(loanBalanceElement.textContent)) {
             bankBalanceElement.textContent = Number(bankBalanceElement.textContent) + (paybackAmount - Number(loanBalanceElement.textContent));
@@ -154,7 +153,7 @@ btnBankElement.addEventListener("click", function () {
         else {
             loanBalanceElement.textContent = Number(loanBalanceElement.textContent) - paybackAmount;
         }
-        
+
         // Reset variables
         workBalance = 0;
         paybackAmount = 0;
@@ -164,19 +163,19 @@ btnBankElement.addEventListener("click", function () {
         salaryBalanceElement.textContent = 0;
         workBalance = 0;
     }
-    
+
     // hide Loan balance and repay button
     if (Number(loanBalanceElement.textContent) === 0)
         toggleDomElements("hide");
-    
+
 });
 
 // Repay button logic 
 btnPayLoanElement.addEventListener("click", function () {
     if (loanBalanceElement.textContent != 0) {
         // Update DOM
-        salaryBalanceElement.textContent = 0; 
-        
+        salaryBalanceElement.textContent = 0;
+
         // if the payback amount is larger then the loan amount the rest goes to balance!
         if (workBalance > Number(loanBalanceElement.textContent)) {
             bankBalanceElement.textContent = Number(bankBalanceElement.textContent) + (workBalance - Number(loanBalanceElement.textContent));
@@ -188,15 +187,15 @@ btnPayLoanElement.addEventListener("click", function () {
         // Reset variables
         workBalance = 0;
     }
-    
+
     // hide Loan balance and repay button
-    if (Number(loanBalanceElement.textContent) === 0) 
+    if (Number(loanBalanceElement.textContent) === 0)
         toggleDomElements("hide");
-    
+
 });
 
 // Buy laptop button logic 
-btnPuyProductElement.addEventListener("click", function () { 
+btnPuyProductElement.addEventListener("click", function () {
     let productPrice = Number(laptopPriceTextElement.innerHTML);
     if (Number(bankBalanceElement.textContent) >= productPrice) {
         bankBalanceElement.textContent = Number(bankBalanceElement.textContent) - productPrice;
