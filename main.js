@@ -24,11 +24,25 @@ const laptopHeadingDescriptionElement = document.getElementById("laptop-heading-
 const btnPuyProductElement = document.getElementById("btn-buy-product");
 const laptopPriceTextElement = document.getElementById("laptop-price");
 
-/* Bank Logic */
-// Setting initial bank balances and initializing max loan limit
-let maxLoanLimit; 
+// Setting initial values for balances and initializing variables
 bankBalanceElement.textContent = 0;
+salaryBalanceElement.textContent = 0;
+let maxLoanLimit; 
+let workBalance = 0;
+let paybackAmount = 0;
+const salaryAmount = 100;
 
+// API logic
+const initialPosts = await fetchPosts();
+postsView.setPost(initialPosts);
+const laptopsData = postsView.getPosts();
+
+// Default DOM Element setup when launching the browser
+renderSelectOptions();
+renderActivePosts(0);
+
+/* Functions*/ 
+// This function shows/hides the repay button and loan balance text
 function toggleDomElements (toggleMode) {
     if (toggleMode == "hide") {
         loanTextElement.classList.add("hidden");
@@ -39,6 +53,46 @@ function toggleDomElements (toggleMode) {
         btnPayLoanElement.classList.remove("hidden");
     }
 }
+
+// This function add Laptops to the select dropdown element 
+function renderSelectOptions () {
+    for (const laptopI in laptopsData) {
+        let newOption = document.createElement("option");
+        newOption.value = laptopsData[laptopI].id;
+        newOption.text = laptopsData[laptopI].title;
+        selectLaptopElement.add(newOption);
+    }
+}
+
+//This function creating the list items elements, to display features about the selected laptop 
+function createLaptopFeatureSection (laptopId) { 
+    laptopsData[laptopId].specs.forEach(element => {
+        let newListElement = document.createElement("li");
+        newListElement.innerHTML = element;
+        laptopFeaturesElement.appendChild(newListElement);
+    });
+}
+
+// This function updates all the all the dom elements after the user have selected i laptop on the select button
+function renderActivePosts(laptopId) {
+    if (!isNaN(laptopId)) {
+        // Reset the list of features
+        laptopFeaturesElement.innerHTML = ""
+        createLaptopFeatureSection(laptopId);
+        laptopHeadingDescriptionElement.innerHTML = laptopsData[laptopId].title 
+        laptopDescriptionElement.innerHTML = laptopsData[laptopId].description;
+        laptopPriceTextElement.innerHTML = laptopsData[laptopId].price;
+
+        // Checks if the image link is valid, if not it switches file format
+        let imgLink = `https://hickory-quilled-actress.glitch.me/${laptopsData[laptopId].image}`;
+        laptopImgElement.src = imgLink;
+        laptopImgElement.onerror = () => {
+            laptopImgElement.src = imgLink.endsWith(".png") ? imgLink.replace(".png", ".jpg") : imgLink.replace(".jpg", ".png"); 
+        }      
+    }       
+}
+
+/* EventListeners */
 // Get loan button logic
 BtnLoanElement.addEventListener("click", function() {
     if (Number(loanBalanceElement.textContent) > 0)
@@ -74,13 +128,6 @@ BtnLoanElement.addEventListener("click", function() {
     }
 });
 
-/* Work Logic */ 
-// Setting initial balance
-salaryBalanceElement.textContent = 0;
-let workBalance = 0;
-let paybackAmount = 0;
-const salaryAmount = 100;
- 
 // Work button logic
 btnWorkElement.addEventListener("click", function () {
     workBalance += salaryAmount;
@@ -137,7 +184,6 @@ btnPayLoanElement.addEventListener("click", function () {
         }
         else {
             loanBalanceElement.textContent = Number(loanBalanceElement.textContent) - workBalance;
-            bankBalanceElement.innerHTML = 0
         }
         // Reset variables
         workBalance = 0;
@@ -149,7 +195,6 @@ btnPayLoanElement.addEventListener("click", function () {
     
 });
 
-/* Showcase section logic */
 // Buy laptop button logic 
 btnPuyProductElement.addEventListener("click", function () { 
     let productPrice = Number(laptopPriceTextElement.innerHTML);
@@ -162,60 +207,8 @@ btnPuyProductElement.addEventListener("click", function () {
     }
 });
 
-/* Laptop info section */
-// API logic
-const initialPosts = await fetchPosts();
-postsView.setPost(initialPosts);
-const laptopsData = postsView.getPosts();
-
-// default DOM Element setup when launching the browser
-renderSelectOptions();
-renderActivePosts(0);
-
-// Add Laptops to select dropdown element 
-function renderSelectOptions () {
-    for (const laptopI in laptopsData) {
-        let newOption = document.createElement("option");
-        newOption.value = laptopsData[laptopI].id;
-        newOption.text = laptopsData[laptopI].title;
-        selectLaptopElement.add(newOption);
-    }
-}
-
 // Logic for the Select button
 selectLaptopElement.addEventListener("change", function () {
     let laptopId = Number(selectLaptopElement.options[selectLaptopElement.selectedIndex].value) - 1;
     renderActivePosts(laptopId);
 });
-
-// This function updates all the all the dom elements after the user have selected i laptop on the select button
-function renderActivePosts(laptopId) {
-    if (!isNaN(laptopId)) {
-        laptopFeaturesElement.innerHTML = laptopsData[laptopId].specs;
-        laptopHeadingDescriptionElement.innerHTML = laptopsData[laptopId].title 
-        laptopDescriptionElement.innerHTML = laptopsData[laptopId].description;
-        laptopPriceTextElement.innerHTML = laptopsData[laptopId].price;
-
-        // Checks if the image link is valid, if not it switches file format
-        let imgLink = `https://hickory-quilled-actress.glitch.me/${laptopsData[laptopId].image}`;
-        laptopImgElement.src = imgLink;
-        laptopImgElement.onerror = () => {
-            laptopImgElement.src = imgLink.endsWith(".png") ? imgLink.replace(".png", ".jpg") : imgLink.replace(".jpg", ".png"); 
-        }      
-    }       
-}
-
-
-
-// TODO: clean this code upp and implement som the select html element select can select title and that title is pair to its id and specs!
-
-// TODO: When the user select a laptop in the select window it should create object with the selected laptop info render it to the screen with function RenderSelectOption. SelectLaptopElement enables the user to select laptop and sends the id of the selected laptop to RenderSelectOption
-
-// TODO: Integrate this function in the renderSelectOption!
-// function testAPItoHtml (apiInfo) {
-//     let dataInfo = ""; 
-//     for (const element of apiInfo) {
-//         dataInfo += element; 
-//     }
-//     return dataInfo;
-// }

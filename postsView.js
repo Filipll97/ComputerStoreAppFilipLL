@@ -1,3 +1,4 @@
+// Get and Set functions for the data that is retrieved by the API 
 let currentPost = [];
 
 const getPosts = () => {
