@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <title>Komputer Store</title>
+</head>
+
+<body class="background-secondary">
+    <nav class="background-primary">
+        <div class="title-text">
+            <h1>Komputer Store</h1>
+        </div>
+    </nav>
+    <main>
+        <!-- Cars styling -->
+        <!-- Card Bank section -->
+        <div class="card background-cards" id="card1">
+            <div class="card-items">
+                <h2>Joe Banker</h2>
+                <div class="row-elements">
+                    <p>Balance</p>
+                    <p> <span id="bank-balance"></span> kr</p>
+                </div>
+                <div class="row-elements hidden" id="loan-text">
+                    <p>Loan</p>
+                    <p><span id="loan-balance"></span> kr</p>
+                </div>
+                <div class="row-elements">
+                    <button class="btn btn-primary-color btn-hover" id="btn-loan">
+                        Get a loan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Work section -->
+        <div class="card background-cards" id="card2">
+            <div class="card-items">
+                <h2>Work</h2>
+                <div class="row-elements">
+                    <p>Pay</p>
+                    <p><span id="salary-balance"></span> kr</p>
+                </div>
+                <div id="btn-repay-loan">
+                    <button class="btn btn-primary-color btn-hover hidden" id="btn-repay">
+                        <p>Repay loan</p>
+                    </button>
+                </div>
+                <div class="row-elements" id="btns">
+                    <button class="btn btn-secondary-color btn-hover" id="btn-bank">
+                        <p>Bank</p>
+                    </button>
+                    <button class="btn btn-primary-color btn-hover" id="btn-work">
+                        <p>Work</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card laptop section -->
+        <div class="card background-cards" id="card3">
+            <div class="card-items laptop">
+                <h2>Laptops</h2>
+                <select name="products-laptop" id="products-laptop"></select>
+                <p><span>Features</span></p>
+                <ul id="laptop-features">
+                </ul>
+            </div>
+        </div>
+
+        <!-- Showcase section -->
+        <section class="showcase background-cards">
+            <div class="grid-container">
+                <div class="product-img-container">
+                    <img src="" alt="" id="product-img">
+                </div>
+                <div id="#product-text-info">
+                    <div class="text-container">
+                        <h2 id="laptop-heading-description"></h2>
+                        <p id="laptop-description">No laptop selected!</p>
+                    </div>
+                </div>
+                <div id="payment-info">
+                    <h2><span id="laptop-price"></span> Kr</h2>
+                    <button class="btn btn-secondary-color btn-hover" id="btn-buy-product">BUY NOW</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="/JavaScript/app.js" type="module"></script>
+</body>
+
+</html>
