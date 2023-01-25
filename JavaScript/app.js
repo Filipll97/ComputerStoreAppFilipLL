@@ -1,5 +1,5 @@
-import fetchComputers from "./fetchComputers";
-import computerView from "./computerView";
+import fetchComputers from "./fetchComputers.js";
+import computersView from "./computerView.js";
 
 // Declaring: Get Loan section dom objects 
 const btnLoanElement = document.getElementById("btn-loan");
@@ -36,8 +36,8 @@ salaryBalanceElement.textContent = 0;
 
 // API logic
 const initialComputers = await fetchComputers();
-computerView.setPost(initialComputers);
-const laptopsData = computerView.getPosts();
+computersView.setComputers(initialComputers);
+const laptopsData = computersView.getComputers();
 
 // Default DOM Element setup when launching the browser
 renderSelectOptions();
@@ -113,7 +113,7 @@ btnLoanElement.addEventListener("click", function () {
         // Ensures that the user only input numbers and valid amount  
         let validAmount = true;
         while (validAmount) {
-            if (!isNaN(Number(loanBalanceElement.textContent)) && maxLoanLimit >= Number(loanBalanceElement.textContent))
+            if (!isNaN(Number(loanBalanceElement.textContent)) && maxLoanLimit >= Number(loanBalanceElement.textContent) && Number(loanBalanceElement.textContent) > 0)
                 validAmount = false;
             else if (isNaN(Number(loanBalanceElement.textContent)))
                 loanBalanceElement.textContent = prompt("Invalid amount, needs to be a number! Amount: ");

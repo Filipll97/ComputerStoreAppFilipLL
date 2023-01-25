@@ -5,13 +5,13 @@ const getComputers = () => {
     return [...currentComputers];
 }
 
-const setComputers = (Computers) => {
+const setComputers = (computers) => {
     currentComputers = computers;
 };
 
-const computerView = {
+const computersView = {
     getComputers,
     setComputers
 };
 
-export default computerView
+export default computersView
