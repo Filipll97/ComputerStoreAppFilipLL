@@ -1,8 +1,8 @@
-import fetchPosts from "./posts.js";
-import postsView from "./postsView.js";
+import fetchComputers from "./fetchComputers.js";
+import computersView from "./computerView.js";
 
 // Declaring: Get Loan section dom objects 
-const BtnLoanElement = document.getElementById("btn-loan");
+const btnLoanElement = document.getElementById("btn-loan");
 const loanTextElement = document.getElementById("loan-text");
 const btnPayLoanElement = document.getElementById("btn-repay");
 const bankBalanceElement = document.getElementById("bank-balance");
@@ -35,9 +35,9 @@ bankBalanceElement.textContent = 0;
 salaryBalanceElement.textContent = 0;
 
 // API logic
-const initialPosts = await fetchPosts();
-postsView.setPost(initialPosts);
-const laptopsData = postsView.getPosts();
+const initialComputers = await fetchComputers();
+computersView.setComputers(initialComputers);
+const laptopsData = computersView.getComputers();
 
 // Default DOM Element setup when launching the browser
 renderSelectOptions();
@@ -46,7 +46,7 @@ renderActivePosts(0);
 /* Functions*/
 // This function shows/hides the repay button and loan balance text
 function toggleDomElements(toggleMode) {
-    if (toggleMode == "hide") {
+    if (toggleMode === "hide") {
         loanTextElement.classList.add("hidden");
         btnPayLoanElement.classList.add("hidden");
     }
@@ -96,7 +96,7 @@ function renderActivePosts(laptopId) {
 
 /* EventListeners */
 // Get loan button logic
-BtnLoanElement.addEventListener("click", function () {
+btnLoanElement.addEventListener("click", function () {
     if (Number(loanBalanceElement.textContent) > 0)
         alert(`You have to repay the current loan before applying for a new loan!`);
     else {
@@ -113,7 +113,7 @@ BtnLoanElement.addEventListener("click", function () {
         // Ensures that the user only input numbers and valid amount  
         let validAmount = true;
         while (validAmount) {
-            if (!isNaN(Number(loanBalanceElement.textContent)) && maxLoanLimit >= Number(loanBalanceElement.textContent))
+            if (!isNaN(Number(loanBalanceElement.textContent)) && maxLoanLimit >= Number(loanBalanceElement.textContent) && Number(loanBalanceElement.textContent) > 0)
                 validAmount = false;
             else if (isNaN(Number(loanBalanceElement.textContent)))
                 loanBalanceElement.textContent = prompt("Invalid amount, needs to be a number! Amount: ");
@@ -124,7 +124,7 @@ BtnLoanElement.addEventListener("click", function () {
         bankBalanceElement.textContent = (Number(bankBalanceElement.textContent) + Number(loanBalanceElement.textContent));
 
         // Hides the loan balance text and repay loan button if 
-        if (Number(loanBalanceElement.textContent) != 0)
+        if (Number(loanBalanceElement.textContent) !== 0)
             toggleDomElements("add");
     }
 });
@@ -138,7 +138,7 @@ btnWorkElement.addEventListener("click", function () {
 // Bank button logic
 btnBankElement.addEventListener("click", function () {
     // check if user have a loan
-    if (loanBalanceElement.textContent != 0) {
+    if (loanBalanceElement.textContent !== 0) {
         paybackAmount = workBalance * 0.1;
         workBalance -= paybackAmount;
 
@@ -174,7 +174,7 @@ btnBankElement.addEventListener("click", function () {
 
 // Repay button logic 
 btnPayLoanElement.addEventListener("click", function () {
-    if (loanBalanceElement.textContent != 0) {
+    if (loanBalanceElement.textContent !== 0) {
         // Update DOM
         salaryBalanceElement.textContent = 0;
 

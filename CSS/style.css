@@ -1,0 +1,219 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* General styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.2em;
+    font-size: 1em;
+}
+
+span {
+    font-weight: bold;
+}
+
+/* Utility Classes */
+.hidden {
+    visibility: hidden;
+}
+
+.background-primary {
+    background: #333;
+}
+
+.background-secondary {
+    background: #fff;
+}
+
+.background-cards {
+    background: #f4f4f4;
+}
+
+.btn-primary-color {
+    background: #ff5e6c;
+}
+
+.btn-secondary-color {
+    background: #fff5d7;
+}
+
+.btn {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-hover:hover {
+    background: rgba(106, 106, 106, 0.33);
+}
+
+/* Navbar styling */
+nav .title-text {
+    background: linear-gradient(#fff, #e66465);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+nav .title-text h1 {
+    margin-left: 40px;
+    padding: 0.5em 0;
+}
+
+/* Main layout styling */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 0.3fr;
+    grid-template-areas: "card1 card2 card3" "showcaseCard showcaseCard showcaseCard";
+    gap: 2.5em;
+    margin: 20px 40px;
+}
+
+@media screen and (max-width: 860px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.4fr 0.4fr 0.4fr 1fr;
+        grid-template-areas: "card1" "card2" "card3" "showcaseCard";
+    }
+}
+
+/* Cards styling */
+main .card {
+    max-height: 250px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    height: 100%;
+}
+
+main .card #card1 {
+    grid-area: card1;
+}
+
+main .card #card2 {
+    grid-area: card2;
+}
+
+main .card #card3 {
+    grid-area: card3;
+}
+
+main .card #laptop-features {
+    font-weight: normal;
+}
+
+main .card .card-items {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 100%;
+}
+
+main .card .card-items p {
+    font-size: 1em;
+    margin: 5px 0px;
+}
+
+main .card .card-items h2 {
+    padding: 10px 0px;
+}
+
+main .card .card-items select {
+    font-size: 1em;
+    border-radius: 5px;
+    border: solid 1px rgba(51, 51, 51, 0.3);
+    font-size: 0.9em;
+}
+
+main .card .card-items ul {
+    list-style: inside square;
+    overflow: auto;
+}
+
+main .card .card-items ul li {
+    font-size: 0.8em;
+}
+
+/* repay button styling */
+main .card .card-items #btn-repay-loan {
+    padding: 10px 0px;
+}
+
+main .card .card-items .row-elements {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap: 10px;
+}
+
+main .card .card-items .row-elements #btn-loan {
+    margin-top: 40px;
+    height: 46px;
+}
+
+/* Showcase styling */
+main .showcase {
+    grid-area: showcaseCard;
+    border-radius: 10px;
+}
+
+main .showcase .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "product-img info-text payment-info";
+    place-items: center;
+    border-radius: 10px;
+    padding: 20px 0px;
+}
+
+@media screen and (max-width: 860px) {
+    main .showcase .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 0.4fr 0.4fr;
+        grid-template-areas: "product-img" "info-text" "payment-info";
+        grid-row-gap: 20px;
+        padding: 10px;
+    }
+
+    main .card .laptop {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+main .showcase .grid-container .product-img-container {
+    grid-area: product-img;
+    background: transparent;
+    border: #f1f0f0 solid 2px;
+    border-radius: 10px;
+}
+
+main .showcase .grid-container .product-img-container #product-img {
+    height: 125px;
+    width: 125px;
+    object-fit: fill;
+    border-radius: 10px;
+}
+
+
+main .showcase .grid-container #product-text-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main .showcase .grid-container #payment-info {
+    grid-area: payment-info;
+}
+
+main .showcase .grid-container #payment-info h2 {
+    margin: 10px;
+}
