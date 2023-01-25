@@ -110,10 +110,12 @@ btnLoanElement.addEventListener("click", function () {
             maxLoanLimit = Number(bankBalanceElement.textContent) * 2;
         }
 
+        console.log(typeof loanBalanceElement.textContent, loanBalanceElement.textContent);
         // Ensures that the user only input numbers and valid amount  
         let validAmount = true;
         while (validAmount) {
-            if (!isNaN(Number(loanBalanceElement.textContent)) && maxLoanLimit >= Number(loanBalanceElement.textContent) && Number(loanBalanceElement.textContent) > 0)
+            if (loanBalanceElement.textContent === "") break;
+            else if (!isNaN(Number(loanBalanceElement.textContent)) && maxLoanLimit >= Number(loanBalanceElement.textContent) && Number(loanBalanceElement.textContent) > 0)
                 validAmount = false;
             else if (isNaN(Number(loanBalanceElement.textContent)))
                 loanBalanceElement.textContent = prompt("Invalid amount, needs to be a number! Amount: ");
